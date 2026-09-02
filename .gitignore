@@ -1,0 +1,24 @@
+# Dependencies
+node_modules/
+
+# Next.js build output and caches
+.next/
+out/
+*.tsbuildinfo
+next-env.d.ts
+
+# Firebase local cache
+.firebase/
+firebase-debug.log*
+
+# Local environment files
+.env
+.env.*
+!.env.example
+
+# Editor and operating-system files
+.DS_Store
+*.log
+branch_structure.json
+temp_auto_push.bat
+temp_interactive_push.bat
