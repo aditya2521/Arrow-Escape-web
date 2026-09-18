@@ -2,10 +2,10 @@
 
 import { useEffect, useRef, useState } from 'react';
 
-type Store = 'App Store' | 'Google Play';
+const APP_STORE_URL = 'https://apps.apple.com/app/arrow-escape-unblock-paths/id6808089245';
 
 export function StoreButtons() {
-  const [selectedStore, setSelectedStore] = useState<Store | null>(null);
+  const [selectedStore, setSelectedStore] = useState<'apple' | 'google' | null>(null);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
@@ -28,32 +28,45 @@ export function StoreButtons() {
 
   return (
     <>
-      <div className="mt-8 flex flex-col sm:flex-row gap-3">
-        <StoreButton
-          label="App Store"
-          sub="Download on the"
-          onClick={() => setSelectedStore('App Store')}
-          icon={
+      <div className="mt-8 flex flex-col gap-3">
+        <div className="flex flex-col gap-3 sm:flex-row">
+          <a
+            href={APP_STORE_URL}
+            aria-label="Download Arrow Escape on the App Store"
+            className="inline-flex items-center gap-3 rounded-2xl bg-black px-5 py-3 text-left text-white transition-transform hover:bg-black/85 active:scale-95 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-play lg:hidden"
+          >
             <svg width="24" height="24" viewBox="0 0 24 24" fill="#fff" aria-hidden>
               <path d="M17.564 12.643a4.72 4.72 0 0 1 2.256-3.966 4.836 4.836 0 0 0-3.806-2.056c-1.6-.168-3.144.947-3.966.947-.837 0-2.087-.923-3.436-.896a5.076 5.076 0 0 0-4.27 2.605c-1.842 3.19-.468 7.898 1.317 10.484.87 1.264 1.89 2.68 3.234 2.63 1.301-.053 1.792-.85 3.36-.85 1.56 0 2.014.85 3.383.82 1.4-.023 2.284-1.276 3.135-2.55.99-1.462 1.395-2.9 1.42-2.973-.031-.014-2.723-1.045-2.75-4.144zM14.6 4.83a4.586 4.586 0 0 0 1.06-3.319 4.706 4.706 0 0 0-3.045 1.573 4.397 4.397 0 0 0-1.089 3.196A3.895 3.895 0 0 0 14.6 4.83z" />
             </svg>
-          }
-        />
-        <StoreButton
+            <span className="leading-tight"><span className="block text-[10px] uppercase tracking-widest text-white/70">Download on the</span><span className="block text-lg font-black">App Store</span></span>
+          </a>
+          <button
+            type="button"
+            onClick={() => setSelectedStore('apple')}
+            aria-label="Show App Store QR code"
+            className="hidden items-center gap-3 rounded-2xl bg-black px-5 py-3 text-left text-white transition-transform hover:bg-black/85 active:scale-95 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-play lg:inline-flex"
+          >
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="#fff" aria-hidden>
+              <path d="M17.564 12.643a4.72 4.72 0 0 1 2.256-3.966 4.836 4.836 0 0 0-3.806-2.056c-1.6-.168-3.144.947-3.966.947-.837 0-2.087-.923-3.436-.896a5.076 5.076 0 0 0-4.27 2.605c-1.842 3.19-.468 7.898 1.317 10.484.87 1.264 1.89 2.68 3.234 2.63 1.301-.053 1.792-.85 3.36-.85 1.56 0 2.014.85 3.383.82 1.4-.023 2.284-1.276 3.135-2.55.99-1.462 1.395-2.9 1.42-2.973-.031-.014-2.723-1.045-2.75-4.144zM14.6 4.83a4.586 4.586 0 0 0 1.06-3.319 4.706 4.706 0 0 0-3.045 1.573 4.397 4.397 0 0 0-1.089 3.196A3.895 3.895 0 0 0 14.6 4.83z" />
+            </svg>
+            <span className="leading-tight"><span className="block text-[10px] uppercase tracking-widest text-white/70">Download on the</span><span className="block text-lg font-black">App Store</span></span>
+          </button>
+          <StoreButton
           label="Google Play"
           sub="Get it on"
-          onClick={() => setSelectedStore('Google Play')}
+          onClick={() => setSelectedStore('google')}
           icon={
             <svg width="24" height="24" viewBox="0 0 24 24" fill="#fff" aria-hidden>
               <path d="M3.6 2.3c-.4.4-.6 1-.6 1.7v16c0 .7.2 1.3.6 1.7l9.4-9.7L3.6 2.3zm12 6.3l-2.2 2.2 2.2 2.2 3.6-2.1c1.1-.6 1.1-1.6 0-2.2l-3.6-2.1zm-1 1L5 20.7c.5.1 1.2 0 1.9-.4L14.6 16l-2-2.4-.1 2.1zm0-4L5 3.3c.5-.1 1.2 0 1.9.4L14.6 8l-2 2.4-.1-2.1z" />
             </svg>
           }
-        />
+          />
+        </div>
       </div>
 
       {selectedStore && (
         <div
-          className="fixed inset-0 z-[100] grid place-items-center bg-transparent px-5 py-8"
+          className="fixed inset-0 z-[100] grid place-items-center bg-slate-950/60 px-5 py-8"
           role="presentation"
           onMouseDown={(event) => {
             if (event.target === event.currentTarget) setSelectedStore(null);
@@ -62,20 +75,29 @@ export function StoreButtons() {
           <div
             role="dialog"
             aria-modal="true"
-            aria-labelledby="coming-soon-title"
-            aria-describedby="coming-soon-description"
+            aria-labelledby={selectedStore === 'apple' ? 'app-store-title' : 'coming-soon-title'}
+            aria-describedby={selectedStore === 'apple' ? 'app-store-description' : 'coming-soon-description'}
             className="relative w-full max-w-md overflow-hidden rounded-[32px] border border-white/70 bg-white p-6 text-center text-ink shadow-2xl sm:p-8"
           >
             <button
               ref={closeButtonRef}
               type="button"
               onClick={() => setSelectedStore(null)}
-              aria-label="Close coming soon message"
+              aria-label="Close dialog"
               className="absolute right-4 top-4 z-10 grid h-10 w-10 place-items-center rounded-full border border-slate-200 bg-white/90 text-xl font-bold text-muted shadow-sm transition-colors hover:bg-slate-100 hover:text-ink focus:outline-none focus:ring-2 focus:ring-play focus:ring-offset-2"
             >
               ×
             </button>
 
+            {selectedStore === 'apple' ? (
+              <>
+                <h2 id="app-store-title" className="mt-5 text-3xl font-black tracking-tight">Download Arrow Escape</h2>
+                <p id="app-store-description" className="mt-3 text-muted">Scan with your iPhone to open the App Store.</p>
+                <img src="/app-store-qr.svg" width="240" height="240" alt="QR code for Arrow Escape on the App Store" className="mx-auto mt-6 rounded-2xl border border-slate-200 p-2" />
+                <a href={APP_STORE_URL} className="mt-6 inline-block font-bold text-play underline underline-offset-4">Open App Store link</a>
+              </>
+            ) : (
+              <>
             <div className="mx-auto grid h-24 w-24 place-items-center rounded-[28px] bg-gradient-to-br from-play to-blue-700 shadow-pop">
               <img className="h-16 w-16 object-contain brightness-0 invert" src="/arrow-maze-logo.png" alt="" />
             </div>
@@ -86,7 +108,7 @@ export function StoreButtons() {
               Arrow Escape is nearly here
             </h2>
             <p id="coming-soon-description" className="mt-3 leading-relaxed text-muted">
-              We’re preparing 500 unique levels and milestone awards for {selectedStore}.
+              We’re preparing 500 unique levels and milestone awards for Google Play.
             </p>
             <div className="mt-5 flex items-center justify-center gap-3 text-xs font-extrabold text-slate-600">
               <span className="rounded-full bg-soft px-3 py-2">500 levels</span>
@@ -106,6 +128,8 @@ export function StoreButtons() {
             >
               Contact: aditya159121@gmail.com
             </a>
+              </>
+            )}
           </div>
         </div>
       )}
@@ -119,7 +143,7 @@ function StoreButton({
   icon,
   onClick,
 }: {
-  label: Store;
+  label: string;
   sub: string;
   icon: React.ReactNode;
   onClick: () => void;

@@ -1,5 +1,6 @@
 import Image from 'next/image';
-import { ArrowHero } from './_components/ArrowHero';
+import { PlayingSection } from './_components/PlayingSection';
+import { RealLevelPreview, previewArrowCount } from './_components/RealLevelPreview';
 import { SiteFooter } from './_components/SiteFooter';
 import { SiteHeader } from './_components/SiteHeader';
 import { StoreButtons } from './_components/StoreButtons';
@@ -27,7 +28,7 @@ export default function HomePage() {
         <section className="hero-shell">
           <div className="hero-grid container-x">
             <div className="fade-up">
-              <div className="eyebrow"><span className="status-dot" />COMING SOON</div>
+              <div className="eyebrow"><span className="status-dot" />AVAILABLE ON THE APP STORE</div>
               <h1>Find the arrow<br />that can escape.</h1>
               <p className="hero-copy">A dense logic puzzle built from long, twisting arrows. Clear every path in the right order across 500 unique, validated levels.</p>
               <StoreButtons />
@@ -39,9 +40,9 @@ export default function HomePage() {
             </div>
             <div className="hero-visual" aria-label="Arrow Escape game preview">
               <div className="phone-card">
-                <div className="phone-top"><span>LEVEL 01</span><strong>84 left</strong></div>
-                <div className="maze-stage"><ArrowHero size={390} /></div>
-                <div className="phone-bottom"><span>● ● ●</span><strong>Find a clear path</strong></div>
+                <div className="phone-top"><span>LEVEL 01</span><strong>{previewArrowCount} left</strong></div>
+                <div className="maze-stage"><RealLevelPreview /></div>
+                <div className="phone-bottom"><span>● ● ●</span><strong>Find the blue escape</strong></div>
               </div>
               <div className="logo-float"><Image src="/arrow-maze-logo.png" width={88} height={88} alt="Arrow Escape multi-arrow logo" /></div>
             </div>
@@ -89,9 +90,11 @@ export default function HomePage() {
           </div>
         </section>
 
+        <PlayingSection />
+
         <section id="download" className="container-x launch-wrap">
           <div className="launch-card">
-            <div><span className="launch-kicker">APP STORE + GOOGLE PLAY</span><h2>Your next puzzle obsession is almost here.</h2><p>Choose any level, master all 500, and collect every milestone trophy along the way.</p></div>
+            <div><span className="launch-kicker">NOW ON THE APP STORE</span><h2>Your next puzzle obsession is here.</h2><p>Choose any level, master all 500, and collect every milestone trophy along the way. Google Play is coming soon.</p></div>
             <StoreButtons />
           </div>
         </section>

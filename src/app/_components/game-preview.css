@@ -1,0 +1,187 @@
+.actual-game {
+  position: relative;
+  background: white;
+  color: #1e293b;
+  border: 1px solid #e2e8f0;
+  border-radius: 20px;
+  padding: 25px;
+  box-shadow: 0 20px 55px #1e293b0b;
+  min-width: 0;
+  width: 100%;
+}
+.actual-game-heading {
+  text-align: center;
+}
+.actual-game-heading > span {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: #94a3b8;
+}
+.actual-game-heading h3 {
+  font-size: 23px;
+  font-weight: 800;
+  letter-spacing: -0.8px;
+  margin: 4px 0 22px;
+}
+.actual-game-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+.game-hearts {
+  display: flex;
+  gap: 7px;
+}
+.actual-count {
+  font-weight: 800;
+  color: #2563eb;
+  border: 1px solid #dbeafe;
+  border-radius: 22px;
+  background: #eff6ff;
+  padding: 7px 14px;
+  font-size: 16px;
+}
+.actual-count span {
+  color: #64748b;
+  font-size: 12px;
+}
+.actual-board-scroll {
+  width: 100%;
+  overflow: auto;
+  max-height: 540px;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+}
+.actual-board {
+  display: block;
+  max-width: none;
+  height: auto;
+  margin: 0;
+  aspect-ratio: 1;
+}
+.game-arrow {
+  cursor: pointer;
+  outline: none;
+}
+.game-arrow:focus-visible > g {
+  filter: drop-shadow(0 0 3px #2563eb);
+  stroke: #2563eb;
+}
+.game-arrow:focus-visible > g path {
+  stroke: #2563eb;
+}
+.game-arrow[aria-disabled="true"] {
+  cursor: default;
+}
+.game-zoom {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-bottom: 12px;
+  color: #64748b;
+  font-size: 12px;
+  font-weight: 700;
+}
+.game-zoom button {
+  display: grid;
+  place-items: center;
+  padding: 7px;
+  border: 1px solid #e2e8f0;
+  border-radius: 50%;
+  background: #f8fafc;
+  color: #1e293b;
+}
+.actual-game-message {
+  font-size: 11px;
+  color: #64748b;
+  line-height: 1.7;
+  text-align: center;
+  min-height: 38px;
+  margin: 17px 0 10px;
+}
+.actual-game-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  padding-top: 15px;
+  border-top: 1px solid #e2e8f0;
+}
+.actual-game-controls button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.game-reset {
+  background: transparent;
+  border: 0;
+  color: #64748b;
+  font-size: 11px;
+}
+.game-hint {
+  border: 0;
+  border-radius: 25px;
+  background: #2563eb;
+  color: white;
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: 700;
+}
+.game-hint span {
+  background: #ffffff30;
+  border-radius: 50%;
+  padding: 3px 7px;
+}
+.game-preview-cta {
+  display: block;
+  width: max-content;
+  margin: 23px auto 0;
+  border-radius: 24px;
+  background: #2563eb;
+  color: white;
+  padding: 12px 24px;
+  font-size: 12px;
+  font-weight: 600;
+}
+.game-result {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #eff6ff;
+  padding: 16px;
+  margin-top: 16px;
+  border-radius: 10px;
+  color: #2563eb;
+  font-size: 13px;
+}
+.game-result button {
+  margin-left: auto;
+  background: white;
+  border: 1px solid #bfdbfe;
+  border-radius: 6px;
+  padding: 8px;
+  font-size: 11px;
+}
+
+@media(max-width:760px){.actual-game{padding:20px 15px}.actual-game-heading h3{font-size:22px}.actual-board-scroll{max-height:440px}}
+.play-section{display:grid;grid-template-columns:1fr 1fr;gap:70px;align-items:center;padding-top:75px;padding-bottom:100px;scroll-margin-top:100px}
+.play-kicker{display:block;font-size:10px;letter-spacing:1.8px;font-weight:700;color:#2563eb;margin-bottom:25px}
+.play-copy h2{margin:0;font-size:clamp(34px,4vw,48px);font-weight:650;line-height:1.12;letter-spacing:-2px;color:#142033}
+.play-copy h2>span{color:#2563eb}
+.play-description{font-size:14px;line-height:1.85;color:#64748b;max-width:400px;margin:27px 0 34px}
+.play-steps{padding:0;margin:0;list-style:none}
+.play-steps li{display:flex;gap:18px;align-items:flex-start;border-top:1px solid #e2e8f0;padding:22px 0}
+.play-steps li>span{font-size:11px;color:#94a3b8;padding-top:3px}
+.play-steps h3{font-size:14px;font-weight:600;color:#1e293b;margin:0}
+.play-steps p{font-size:12px;line-height:1.8;color:#64748b;margin:7px 0 0}
+.play-steps li>svg{margin-left:auto;flex-shrink:0;width:17px;height:17px;color:#94a3b8}
+.play-note{display:inline-flex;align-items:center;gap:18px;color:#2563eb;font-size:15px;font-weight:500;margin-top:18px}
+.play-section button:disabled{cursor:default;opacity:.4}
+.play-section :focus-visible{outline:3px solid #2563eb;outline-offset:4px}
+.play-section #try-it{scroll-margin-top:100px}
+@media(max-width:900px){.play-section{gap:35px}}
+@media(max-width:760px){.play-section{grid-template-columns:1fr;gap:35px;padding-top:50px;padding-bottom:65px}.play-copy h2{font-size:38px}.play-section .actual-game{max-width:520px;margin-inline:auto}}
+@media(prefers-reduced-motion:reduce){.play-section *{scroll-behavior:auto;transition:none;animation:none}}

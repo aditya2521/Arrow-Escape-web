@@ -211,3 +211,9 @@ a {
 .float-slow {
   animation: float 4s ease-in-out infinite;
 }
+
+/* The original hero frame now shows the actual game level. */
+.hero-visual .maze-stage svg { width: 100%; max-width: 390px; height: auto; }
+.hero-visual .phone-bottom { padding-right: 40px; }
+.hero-visual .logo-float { background: #090b10; bottom: -12px; right: -8px; }
+@media(max-width:640px) { .hero-visual .logo-float { bottom: -15px; right: 0; border-width: 5px; } .hero-visual .logo-float img { width: 65px; height: 65px; } .hero-visual .phone-bottom { padding-right: 45px; } }

@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   metadataBase: new URL('https://arrowescape.app'),
   title: 'Arrow Escape — Find the arrow that can escape',
   description:
-    'A satisfying logic puzzle with 500 unique arrow levels, milestone trophies, hints, and offline play. Coming soon to iOS and Android.',
+    'A satisfying logic puzzle with 500 unique arrow levels, milestone trophies, hints, and offline play. Download on the App Store. Coming soon to Google Play.',
   keywords: [
     'Arrow Escape',
     'puzzle game',
